@@ -1,7 +1,7 @@
-#include "stm32f0xx_hal.h"
+#include "stm32f4xx_hal.h"
 
 
-void draw_pixel(uint8_t x, uint8_t y, uint8_t color);
+void draw_pixel(uint16_t y, uint16_t x, uint8_t color);
 void invert_pixel(uint8_t x, uint8_t y);
 void invert_rectangle(uint8_t x0, uint8_t y0, uint8_t x1, uint8_t y1);
 void print_text(unsigned char left, unsigned char top, char *string);
@@ -23,7 +23,7 @@ void update_popup(void);
 void set_popup(uint8_t displayedpopup, uint16_t duration);
 
 void clear(void);
-
+void draw_screen(void);
 
 #define add 	0x01
 #define erase 	0x00

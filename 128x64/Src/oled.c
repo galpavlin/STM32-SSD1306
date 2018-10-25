@@ -1,4 +1,4 @@
-#include "stm32f0xx_hal.h"
+#include "stm32f4xx_hal.h"
 #include "oled.h"
 #include <stdio.h>
 #include <string.h>
@@ -25,7 +25,7 @@ void ssd1306_command(uint8_t byte)
 void oled_update(void)
 {
   ssd1306_command(SSD1306_COLUMNADDR);
-  ssd1306_command(0);   // Column start address (0 = reset)
+  ssd1306_command(0);   // Column start address (0 = reset)s
   ssd1306_command(SSD1306_LCDWIDTH-1); // Column end address (127 = reset)
 
   ssd1306_command(SSD1306_PAGEADDR);
@@ -36,7 +36,7 @@ void oled_update(void)
 
 	tx_buffer[0] = 0x40;
 	memcpy(&tx_buffer[1],&gddram[0][0],1024);
-	HAL_I2C_Master_Transmit(&hi2c1,0x78,tx_buffer,1025,20);
+	HAL_I2C_Master_Transmit(&hi2c1,0x78,tx_buffer,1025,2000);
 
 		
 }
